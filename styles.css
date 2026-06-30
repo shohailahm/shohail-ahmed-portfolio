@@ -320,6 +320,7 @@ h1 {
   text-underline-offset: 0.28em;
 }
 
+.about,
 .work,
 .experience,
 .contact {
@@ -328,6 +329,52 @@ h1 {
   padding: clamp(4rem, 9vw, 7rem) 0;
   border-top: 1px solid var(--line-soft);
   scroll-margin-top: 5.5rem;
+}
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.8fr);
+  gap: clamp(1.6rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.about-copy h2 {
+  margin-bottom: 1rem;
+  font-size: clamp(2.35rem, 5vw, 4.15rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.about-copy p {
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: clamp(1.02rem, 1.6vw, 1.18rem);
+}
+
+.about-copy p + p {
+  margin-top: 1rem;
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  align-content: start;
+}
+
+.skill-list li {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.58rem 0.92rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--ink);
+  font-weight: 700;
 }
 
 .section-heading {
@@ -452,33 +499,6 @@ h1 {
   background: var(--panel);
 }
 
-.dial-demo {
-  background:
-    linear-gradient(135deg, var(--panel-2), var(--panel)),
-    var(--panel);
-}
-
-.dial-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-  margin-top: 0.5rem;
-}
-
-.dial-row span {
-  --angle: calc(var(--value) * 3.6deg);
-  width: 4.4rem;
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at center, var(--panel) 56%, transparent 58%),
-    conic-gradient(var(--primary) var(--angle), var(--line-soft) 0);
-  color: var(--ink);
-  font-weight: 900;
-}
-
 .timeline article {
   display: grid;
   grid-template-columns: minmax(220px, 0.45fr) minmax(0, 1fr);
@@ -549,6 +569,7 @@ h1 {
 
 @media (max-width: 920px) {
   .hero,
+  .about,
   .project,
   .timeline article,
   .section-heading,
