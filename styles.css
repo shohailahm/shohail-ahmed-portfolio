@@ -98,7 +98,7 @@ li {
   left: 1rem;
   top: 1rem;
   z-index: 20;
-  transform: translateY(-170%);
+  transform: translateY(-100%);
   background: var(--ink);
   color: var(--bg);
   padding: 0.72rem 1rem;
@@ -127,7 +127,6 @@ li {
 .header-contact,
 .nav a,
 .project-proof,
-.project-index,
 .role,
 .proof-kicker,
 .project-media figcaption,
@@ -205,12 +204,54 @@ li {
   color: var(--ink);
 }
 
+.hamburger {
+  display: none;
+  width: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.6rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--ink);
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger[aria-expanded="true"] span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.nav-drawer {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
 .hero {
   width: min(var(--max), calc(100% - 2rem));
   min-height: calc(100vh - 66px);
   margin: 0 auto;
   display: grid;
-  grid-template-columns: minmax(0, 1.04fr) minmax(320px, 0.96fr);
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
   gap: clamp(2.2rem, 7vw, 6rem);
   align-items: center;
   padding: clamp(4rem, 8vw, 7rem) 0;
@@ -283,8 +324,7 @@ h1 {
     var(--panel);
 }
 
-.proof-kicker,
-.project-index {
+.proof-kicker {
   display: block;
   color: var(--primary);
   font-size: 0.8rem;
@@ -529,7 +569,7 @@ h1 {
 }
 
 .contact {
-  min-height: 68vh;
+  min-height: auto;
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(280px, 0.65fr);
   gap: clamp(2rem, 8vw, 6rem);
@@ -587,28 +627,55 @@ h1 {
 }
 
 @media (max-width: 680px) {
+  .hamburger {
+    display: flex;
+  }
+
   .site-header {
-    align-items: flex-start;
+    position: relative;
+  }
+
+  .nav-drawer {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
     flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    background: var(--bg);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s;
+  }
+
+  .nav-drawer[data-open] {
+    z-index: 5;
+    opacity: 1;
+    pointer-events: auto;
   }
 
   .nav {
-    width: 100%;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
   }
 
-  .header-contact {
-    display: none;
+  .nav a {
+    font-size: 1.2rem;
   }
 
   .header-actions {
-    align-self: stretch;
+    gap: 1rem;
+  }
+
+  .header-contact {
+    display: inline-flex;
   }
 
   .work,
   .experience,
   .contact {
-    scroll-margin-top: 9.5rem;
+    scroll-margin-top: 1.5rem;
   }
 
   h1 {
