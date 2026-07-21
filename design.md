@@ -10,7 +10,7 @@ OKLCH throughout. Light and dark themes toggle via `data-theme="dark"` on `<html
 
 ## Typography
 
-`Avenir Next` / `Helvetica Neue` for body. Mono stack (`SFMono-Regular`, `Consolas`, `Liberation Mono`) for metadata labels (role, proof-kicker, timeline companies). Headings are tight—`0.92` line-height on the hero `h1`, negative letter-spacing. Sizes use `clamp()` so they scale smoothly without breakpoint noise.
+`Avenir Next` / `Helvetica Neue` for body. Mono stack (`SFMono-Regular`, `Consolas`, `Liberation Mono`) for metadata labels (role, project-proof, timeline companies, photo caption). Headings are tight—`0.92` line-height on the hero `h1`, negative letter-spacing. Sizes use `clamp()` so they scale smoothly without breakpoint noise.
 
 ## Layout
 
@@ -19,7 +19,7 @@ A single `--max: 1180px` constraint. The hero, about, project, and experience se
 The grid pairings are asymmetric by intent:
 
 - Hero: copy takes `1.2fr`, proof-stack takes `0.8fr` — headline gets clear visual priority.
-- About: `1fr` copy, `0.8fr` skill list — skills are secondary.
+- About: `1fr` copy, `0.8fr` photo + skill list — photo and skills share the right column.
 - Project featured: `0.55fr` copy, `1fr` screenshot — visual primacy.
 - Timeline: `0.45fr` company, `1fr` bullet list — results are the substance.
 
@@ -27,7 +27,7 @@ The grid pairings are asymmetric by intent:
 
 ### Proof cards
 
-Two cards in the hero sidebar, reduced from three to lower cognitive load on first paint. The first (AI-Worker) gets a distinctive `panel-2` gradient. Cards have a `1px` border, `12px` radius, and a subtle panel-to-bg gradient.
+Two cards in the hero sidebar with direct `<strong>` titles (no separate kicker labels — fewer visual layers). The first (AI-Worker) gets a distinctive `panel-2` gradient. Cards have a `1px` border, `12px` radius, and a subtle panel-to-bg gradient.
 
 ### Theme toggle
 
@@ -35,7 +35,15 @@ A single `44x44px` button with moon/sun icons. Moon visible in light mode, sun v
 
 ### Project list
 
-Featured projects get a two-column layout with screenshot; mini projects (in a `2x1` grid) get a card treatment. The grid collapses to single-column below `680px`.
+Featured projects get a two-column layout with screenshot; mini projects (in a `2x1` grid) get a card treatment. The grid collapses to single-column below `680px`. Eyebrow labels were removed — titles and descriptions speak for themselves.
+
+### About photo
+
+Circular `180px` headshot with a `3px` primary-green border, placed in the right column of the about section above the skill list. Falls back gracefully (hidden via `onerror`) if the image file isn't present yet.
+
+### Currently box
+
+A small panel below the about copy showing what I'm reading, building, and available for. Replaces static filler with an evolving signal.
 
 ### Skip link
 
@@ -63,8 +71,12 @@ No media queries for font sizes (clamp handles that). Three breakpoints only:
 - Hamburger nav uses `aria-expanded` and `aria-label` for screen-reader state.
 - `text-wrap: balance` on headings, `text-wrap: pretty` on body copy.
 
+## Voice
+
+The copy was rewritten to kill AI-generated feel. Principles: specificity over benefit statements, first-person over corporate-speak, concrete examples over generic taglines. The hero now leads with a fact ("9 years of React and TypeScript in production") instead of a mission statement. Section headings vary in structure. The "Currently" box adds a personal signal that evolves over time.
+
 ## Performance
 
-Zero runtime dependencies — no framework, no build step, no JavaScript library. The JS file is ~800 bytes before gzip. Images are `loading="lazy"` with explicit `width`/`height` to prevent layout shift.
+Zero runtime dependencies — no framework, no build step, no JavaScript library. The JS file is ~1.6 KB before gzip. Images are `loading="lazy"` with explicit `width`/`height` to prevent layout shift.
 
 

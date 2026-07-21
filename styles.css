@@ -128,7 +128,6 @@ li {
 .nav a,
 .project-proof,
 .role,
-.proof-kicker,
 .project-media figcaption,
 .timeline-role p {
   font-family: var(--mono);
@@ -324,17 +323,6 @@ h1 {
     var(--panel);
 }
 
-.proof-kicker {
-  display: block;
-  color: var(--primary);
-  font-size: 0.8rem;
-  margin-bottom: 0.55rem;
-}
-
-.proof-card-ai .proof-kicker {
-  color: var(--accent);
-}
-
 .proof-card strong,
 .proof-card span {
   display: block;
@@ -345,7 +333,7 @@ h1 {
   line-height: 1.2;
 }
 
-.proof-card span:not(.proof-kicker) {
+.proof-card span {
   margin-top: 0.55rem;
   color: var(--muted);
 }
@@ -393,6 +381,40 @@ h1 {
 
 .about-copy p + p {
   margin-top: 1rem;
+}
+
+.about-now {
+  margin-top: 1.5rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: var(--panel);
+  font-size: 0.92rem;
+  color: var(--muted);
+}
+
+.about-now strong {
+  color: var(--ink);
+}
+
+.about-photo {
+  margin: 0 0 1.25rem;
+}
+
+.about-photo img {
+  width: 100%;
+  max-width: 180px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary);
+}
+
+.about-photo figcaption {
+  margin-top: 0.55rem;
+  font-size: 0.82rem;
+  color: var(--soft);
+  font-family: var(--mono);
 }
 
 .skill-list {
